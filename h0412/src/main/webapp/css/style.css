@@ -1,0 +1,17 @@
+@charset "UTF-8";
+	/*스타일은 헤드 안에 위치함*/
+		body{ background-color:green; }
+		h2{color:orange; font-size:60px;}
+		P{
+			width:10px; height:4px;
+			border: 1px solid white;
+			text-align: center;
+			color: blue;
+			font-size : 50px;			
+		 }
+		 
+	 ul{
+		    color : yellow;
+		 	list-style-type: circle;
+		 	font-size: 60px;
+	    }

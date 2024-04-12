@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>폰트적용하기e</title>
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Pen+Script&display=swap');
+	@font-face{
+		font-family : "BMEJ";
+		src : url("BMEJ.ttf")format("truetype");
+		font-weight: narmal;
+	}
+	
+	/*글꼴은  : font-fmaily : "폰트이름"
+	  글자크기 : font-size : ..px
+	  글자두께 : font-weight : normal, bold, bolder, lighter
+	  		   font-weight : 100~900; (400 : 일반 700 : 볼드)
+	*/		
+	.c1{font-family: "Black Han Sans", sans-serif;}
+	.c2{font-family: "Nanum Pen Script", cursive;}
+	.c3{font-family: "BMEJ";}
+	/*
+	html{
+	font-size:30px;
+	
+	}*/
+	
+	.a1{ font-variant: small-caps;
+		/* samll-caps; = 크기가 작은 대문자로 표현
+			normal; = 일반적인 형태
+		*/
+	}
+	.a2{ color: brown;
+		 font-weight: 900;
+		 font-style : italic;
+	}
+	.a3{
+			text-decoration: underline;
+			text-transform : downcase;
+	
+	}
+	
+	ul{
+		list-style-type: square;
+		/*disc, circle, square, none*/
+		list-style-image : url("images/dot.jpg");
+	}
+	
+	ol{
+		list-style-type: upper-alpha;
+		/*lower-alpha, upper-alpha,
+		 lower-roman, upper-roman*/
+		 list-style-position: inside;	
+		 /* outside가 기본값
+		 	inside는 살짝 안족으로 들여씀*/
+	
+	}
+	
+	</style>
+</head>
+
+	<body>
+		<h1>커피메뉴</h1>
+		<ol>
+			<li class="c1">아메리카노 <span class="a1">Americano</span></li>
+			<li class="c2">카페라떼 <span class="a2">Cafe Latte</span></li>
+			<li class="c3">에스프레소 <span class="a3">Espresso</span></li>
+		</ol>
+		
+		<ul>
+			<li class="c1">아메리카노</li>
+			<li class="c2">카페라떼 Cafe Latte</li>
+			<li class="c3">에스프레소</li>
+		</ul>
+		
+		
+		<div style="font-size:20px">
+			<div style="font-size:1.5em">
+			30px이 된다
+			</div>
+			<div style="font-size:1em">
+			20px이 된다
+			</div>
+			<div style="font-size:0.5em">
+			10px이 된다
+			</div>
+		</div>
+		
+		<div style="font-size:1rem">
+			16px이 된다
+		</div>
+		<div style="font-size:1.5rem">
+			24px이 된다
+		</div>
+		
+		
+	</body>	
+ </html>

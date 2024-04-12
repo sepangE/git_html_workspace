@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>텍스트 스타일</title>
+	<style type="text/css">
+	h1{
+		color:red;
+		/* 색상이름 사용가능 */
+		text-decoration: overline;
+		/* none (아무것도 없음)
+		   underline(밑줄)
+		   overline(윗줄)
+		   line-through(취소선-중앙에 선)
+		   	
+		*/
+	}
+	h2{
+		color:rgb(0,255,0,0.3);
+		/*rgb(r,g,b,투명도(0~1))*/
+		text-shadow: 5px 5px 3px #f00;
+		/*가로거리, 세로거리, 번짐정도, 색상*/
+	}
+	
+	h3{
+		/* 16진수 사용
+			구글에 16진수 색상 검색 후 원하는 색 선택
+			HEX부분 복사
+		*/
+		color:#73e3ff;
+		text-transform : uppercase;
+		/* none, capitalize(첫글자만 대문자)
+		   uppercase(다 대문자) lowercase(다 소문자)
+		*/
+	}
+	
+	h4{
+		color: hsl(192,100,73%,0.3);
+	
+	}
+	
+	.c1{direction:rtl; 
+	/* 아랍어같이 오른쪽에서 왼쪽으로
+		 읽는 글자일 경우 방향 정해줌*/
+		 text-align:center;}
+		 /*start, end, left, right, center, justify*/
+	.c2{ letter-spacing : 0.2em;}
+	.c3{ word-spacing : 0.2em;}
+	.c4{ text-align : justify;
+		 text-justify : auto;}
+	.c4:after{
+	content:"";
+	display:inline-block;
+	width:100%;}
+	.c5{
+		text-indent : 10px;/*글자를 얼마나 들여쓸지, 크기 백분율*/
+		line-height: 2;
+		/*문단의 줄 간격을 지정 : 2는 글자크기의 두배 
+							0.7은 글자크기의 0.7배
+		*/
+		}
+		
+	.p1{ white-space : normal;}
+		/*연속 공백을 하나로 합침
+		 줄이 너무 길어서 자동 줄바꿈*/
+	.p2{ width: 500px; overflow : hidden;
+	white-space:nowrap; text-overflow:ellipsis;
+	/*지정한 영역을 벗어나는 텍스트는..
+	 clip 잘라버림, ellipsis 말줄임표로 표현해줌*/
+	}
+	/*연속 공백을 하나로 합치면서 <br>태그에서만 줄바꿈이 있음*/
+	.p2:hover{overflow : visible;}
+	
+	.p3{ white-space : pre;	}
+	/*연속 공백을 유지.*/
+	.p4{ whtie-space : pre-wrap;}
+	/*연속공백을 유지, 줄이 길어 넘치는 경우 자동 줄바꿈*/
+	.p5{ white-space: pre-line;}
+	/*연속공백을 유지, 줄이 길어 넘치는 경우 자동 줄바꿈*/
+	
+	</style>
+	
+</head>
+	<body>
+		<h1>HTML</h1>
+		<h2>CSS</h2>
+		<h3>javascript</h3>
+		<h4>jquery</h4>
+		
+		<div>
+			<p class="c1">오늘의 수업은 css 글꼴에 관한 내용입니다.<p>
+			<p class="c2">오늘의 수업은 css 글꼴에 관한 내용입니다.<p>
+			<p class="c3">오늘의 수업은 css 글꼴에 관한 내용입니다.<p>
+			<p class="c4">오늘의 수업은 css 글꼴에 관한 내용입니다.<p>
+			<p class="c5">오늘의 수업은 css 글꼴에 관한 내용입니다.<p>
+		</div>
+		
+		<p class="p1">
+		<strong>normal</strong><br>
+		[OSEN=연휘선 기자] "'눈물의 여왕' 저도 재미있게 보는데 이제는 OTT로 보고 '세자가 사라졌다'는 MBN에서 본방으로 봐주세요". 인기 아이돌 그룹 엑소(EXO)의 수호가 시청자들의 국본 자리를 노린다. 
+		</p>
+		<p class="p2">
+		<strong>nowrap</strong><br>
+		[OSEN=연휘선 기자] "'눈물의 여왕' 저도 재미있게 보는데 이제는 OTT로 보고 '세자가 사라졌다'는 MBN에서 본방으로 봐주세요". 인기 아이돌 그룹 엑소(EXO)의 수호가 시청자들의 국본 자리를 노린다. 
+		</p>
+		<p class="p3">
+		<strong>pre</strong><br>
+		[OSEN=연휘선 기자] "'눈물의 여왕' 저도 재미있게 보는데 이제는 OTT로 보고 '세자가 사라졌다'는 MBN에서 본방으로 봐주세요". 인기 아이돌 그룹 엑소(EXO)의 수호가 시청자들의 국본 자리를 노린다. 
+		</p>
+		<p class="p4">
+		<strong>pre-wrap</strong><br>
+		[OSEN=연휘선 기자] "'눈물의 여왕' 저도 재미있게 보는데 이제는 OTT로 보고 '세자가 사라졌다'는 MBN에서 본방으로 봐주세요". 인기 아이돌 그룹 엑소(EXO)의 수호가 시청자들의 국본 자리를 노린다. 
+		</p>
+		<p class="p5">
+		<strong>pre-line</strong><br>
+		[OSEN=연휘선 기자] "'눈물의 여왕' 저도 재미있게 보는데 이제는 OTT로 보고 '세자가 사라졌다'는 MBN에서 본방으로 봐주세요". 인기 아이돌 그룹 엑소(EXO)의 수호가 시청자들의 국본 자리를 노린다. 
+		</p>
+	</body>
+</html>
