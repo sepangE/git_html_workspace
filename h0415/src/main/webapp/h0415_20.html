@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>포지션 예제</title>
+	<style>
+	*{margin : 0; padding:0;}
+	#main{
+		  border:1px solid black;
+		  width:500px; height:500px;}
+	body{height:3000px;}
+	.c01,.c02,.c03,.c04,.c05{
+	width:30px; height:30px; background:yellow;
+	font-size:20px; border:1px solid black;
+	text-align : center;
+	}
+	.c01{position : absolute;
+		 top : 470px; left:470px;
+		 z-index:1;}
+	.c02{position : absolute;
+		 top : 0px; left : 440px;}
+	.c03{position : absolute;
+		 top : 470px; left: 50px;}	
+	.c04{position : relative;
+		 top : 220px; left:230px;}
+	.c05{position:fixed;
+		 top : 220px; left: 470px;
+		 z-index :0;}
+	
+	</style>
+	
+</head>
+	<body>
+		<div id="main">
+			<div class="c01">1</div>
+			<div class="c02">2</div>
+			<div class="c03">3</div>
+			<div class="c04">4</div>
+			<div class="c05">5</div>
+			
+		</div>
+	</body>
+</html>

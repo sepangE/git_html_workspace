@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>position - fixed</title>
+	<style>
+	/*요소를 일반적 문서흐름에서 제거하고 지정된 위치에 고정
+	즉, 문서의 흐름과 상관없이 원하는 위치에 요소배치
+	화면이 스크롤되도 같은 위치에 고정*/
+	div{bordr: 1px solid black;}
+	
+	.b1{width:100px; height:100px;
+		background : yellow;
+		position:fixed;
+		top:100px; left:10px;
+		z-index:1;}
+	.t1{
+		border :1px solid black;
+		z-index:2;}
+	.t2{
+		border: 1px solid black;
+		z-index:3;}
+	
+	</style>
+	
+</head>
+	<body>
+		<div class="t1">첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br></div>
+		<div class="b1"></div>
+		<div class="t2">두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br></div>
+	</body>
+</html>

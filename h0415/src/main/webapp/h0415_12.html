@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>box-sizing</title>
+	<style>
+	div{width:300px; height:150px;
+		margin:10px; padding:30px;
+		border:2px solid black;}
+	.b1{box-sizing: content-box;}
+	/*콘텐츠 영역기준 - 속성 값을 영역 너비값으로 사용*/
+	.b2{box-sizing: border-box;
+		/*테두리까지 박스 전체 기준 - 속성값을 콘텐츠 영역에
+		테두리까지 포함한 박스 모델 전체 너비값*/
+	}
+	
+	</style>
+	
+</head>
+	<body>
+		<div class="b1">box1</div>
+		<div class="b2">box2</div>
+		
+		
+	</body>
+</html>

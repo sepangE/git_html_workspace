@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>z-index</title>
+	<style>
+	/*요소가 쌓이는 순서 정하기
+	z-indedx값이 크면 작은요소보다 위에 위치한다.
+	명시하지 않을때는 1부터 시작해서 커진다.
+	*/
+	div{width : 100px; height: 100px;
+		position : absolute;}
+	.b1{background : red;
+		top:20px; left:200px;
+		z-index:1;}
+	.b2{background : green;
+		top:60px; left:260px;
+		z-index:2;}
+	.b3{background : blue;
+		top:80px; left:230px;
+		z-index:-1;}
+	</style>
+	
+</head>
+	<body>
+		<div class="b1"></div>
+		<div class="b2"></div>
+		<div class="b3"></div>
+		
+		
+		
+	</body>
+</html>

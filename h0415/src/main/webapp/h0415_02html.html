@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>레이아웃</title>
+	<style type="text/css">
+	/* 블록 요소 : div, h, p
+	   인라인 요소 : span, b, i, strong, a, img
+	
+	*/
+	.box1{ width : 200px;/*고정 너비*/
+		   height:100px;/*고정 높이*/
+		   background : orange;/*배경 색*/
+	}
+	.box2{ width : 50%;/*가변 너비 - 브라우저 창의 50%*/
+		   height: 100px;
+		   background : blue;
+	}
+	/*높이와 너비 영향 받는건 블록 요소
+	  인라인 요소는 적용 안됨*/
+	span{  display : block;/*인라인을 블록으로*/
+		   background : red;
+	}
+	
+	h2 { display: inline; /*블록레벨 요소를 인라인으로*/
+	}
+	a{/*인라인 요소임*/
+		display:inline-block;
+		/*인라인을 블록형태로 만들어줘서 높이 지정이 가능*/
+		height:100px;
+		border:1px solid black;
+	}
+	
+	
+	</style>
+	
+	
+</head>
+	<body>
+		
+		<div class="box1">div1</div>
+		<div class="box2">div2</div>
+		
+		<h2>HTML</h2>
+		<h2>CSS</h2>
+		
+		<img src="images/mic.jpg">
+		
+		<span>JAVA</span>
+		<span>JSP</span>
+		
+		<a href="#">a태그</a>
+		
+	</body>
+</html>

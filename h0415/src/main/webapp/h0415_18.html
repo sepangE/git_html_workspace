@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>position - sitcky</title>
+	<style>
+	/*
+	요소를 일반적인 문서 흐름에 따라 배치하고,
+	스크롤되는 가장 가까운 상위요소에 오프셋 적용
+	*/
+	/*visivility : 특정 요소를 화면에 보이게 하는 속성*/
+	*{margin:0; padding:0;}
+	div{bordr: 1px solid black;}
+	.b1{width:100px; height:100px;
+		background:blue;
+		position:sticky;
+		bottom:0px;}
+	.b2{width:100px; height:100px;
+		background:lightgreen;
+		visivility: hidden;}
+	.b2{width:100px; height:100px;
+		background:lightgreen;
+		visivility: visible;}	
+	
+	</style>
+	
+</head>
+	<body>
+		<div>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br>첫번째<br></div>
+		<div class="b1"></div>
+		<div>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br>두번째<br></div>
+	</body>
+</html>
