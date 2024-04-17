@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+	div{width:100px; height:100px; background:red;
+	margin:100px;}
+	div.b1{
+		animation: mv 3s infinite, rot 1s;
+		}
+	div.b2{
+	animation : background 5s, shape 2s infinite;}
+	@keyframes mv{
+		0%{	background:red;}
+		50%{background:green;}
+		100%{background:blue;}
+	}
+	
+	@keyframes rot{
+		from{transform:rotate(0deg);}
+		to{transform:rotate(45deg);}
+	}
+	@keyframes shape{
+		from{border : 1px solid black;}
+		to{border : 1px solid black;
+			border-radius:50%;}
+	}
+	</style>
+	
+</head>
+	<body>
+		<div class="b1"></div>
+		<hr>
+		<div class="b2"></div>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+	.b1{ width:100px; height:100px;
+	transition:width 1s height 3s;}
+	
+	div.b1{background:orange; 
+		width:100px; height: 100px;
+		margin : 10px; 
+	}
+	div.b1:hover{ width:300px; height:300px;}
+	
+	.tr1{ background : red; 
+		width:100px; height:100px;
+		margin : 10px;
+		transition-duration:2s, 3s; 
+		text-align:center; 
+		font-size:20px;
+		border:1px solid blcack;}
+	div.tr1:hover{ background:blue; 
+		width:200px; height:200px; 
+		transform:rotateZ(180deg);}
+	
+	div.b2{background:orange; 
+	width:100px; height: 100px;
+	margin : 10px;
+	transition: 2s linear;
+	}
+	
+	div.b2:hover{background:skyblue;
+	width : 200px; height: 200px;
+	transform:rotateX(180deg); perspective:120px;
+	}
+	</style>
+	
+	
+</head>
+	<body>
+		<h1>가로세로너비변환</h1>
+		<div class="b1"></div>
+		
+		<hr>
+		<p>오른쪽으로 한바퀴 구르고 크기 커지고 색도 변함 </p>
+		<div class="tr1"><h1>!</h1></div>
+		
+		<p>원근감주고 크기커지고 x축 방향으로 회전</p>
+		<div class="b2"></div>
+	</body>
+</html>

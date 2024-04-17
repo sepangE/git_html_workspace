@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>속성 선택자 실습</title>
+	<style>
+	/*a 태그에 hwp로 끝나면 배경이미지로 hwp_icon.gif 넣고*/
+	/*a 태그에 xls로 끝나면 배경이미지로 excel_icon.gif 넣기*/
+	/*ul 네모로 바꾸기
+	  a 글자 초록, 밑줄 없애기*/
+	/*ul{list-style-type: square; text-decoration:none;}*/
+	li a{ list-style-type: square; text-decoration:none;
+		line-height:30px}
+	a[href]{color : green;}
+	a[href $= "hwp"] {
+	text-decoration:none; 
+	background : url("images/hwp_icon.gif") no-repeat right;
+	padding-right :20px;}
+	
+	a[href $= "xls"] {
+	text-decoration:none; 
+	background : url("images/xls.gif") no-repeat right;
+	padding-right :20px}
+	
+	</style>
+	
+	
+</head>
+	<body>
+		<h3>회사 소개 파일 다운 받기</h3>
+	<ul>
+		<li><a href="intro.hwp">hwp 파일</a></li>
+		<li><a href="intro.xls">엑셀 파일</a></li>
+	</ul>	
+	
+	</body>
+</html>

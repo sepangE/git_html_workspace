@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>transform-move</title>
+	<style>
+	.origin{ border: 1px solid black;
+			 width : 230px;
+			 height: 230px;
+			 float : left;
+			 margin : 40px;}
+	.movex:hover{
+		transform: translateX(50px);
+		/*x축으로 이동*/
+	}
+	.movey:hover{
+		transform: translatey(70px);
+	}
+		/*y축으로 이동*/
+	.movexy:hover{
+		transform: translate(50px, 70px);	
+	}
+	</style>
+	
+	
+</head>
+	<body>
+		<div class="origin">
+			<div class="movex">
+				<img src="images/cat.jpg">
+			</div>	
+		</div>
+		
+		<div class="origin">
+			<div class="movey">
+				<img src="images/cat.jpg">
+			</div>	
+		</div>
+		
+		<div class="origin">
+			<div class="movexy">
+				<img src="images/cat.jpg">
+			</div>	
+		</div>
+		
+		
+		
+	</body>
+</html>

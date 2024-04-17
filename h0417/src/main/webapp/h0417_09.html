@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+	/*
+	1. 수박, 배 ,자두 : 굵은 글씨 : font-weight:600
+	2. hover했을때 노랑
+	3. 포도는 :nth-last-child(n)을 사용
+	4. 배에 nth-child()를 사용해서 초록으로
+	*/
+	li{border : 1px solid black; line-height:2.5;
+	   width:150px; height:40px; text-align :center;}
+	li{list-style-type : none;}
+	li:nth-child(2n) {background:pink; font-weight:600; }
+	li:nth-child(4){background:lightgreen;}
+	li:nth-last-child(3){background:lightblue;}
+	li:hover{background:yellow;}
+	</style>
+	
+	
+</head>
+	<body>
+		<h2>과일종류</h2>
+	   <ul>
+	     <li>사과</li>
+	     <li>수박</li>
+	     <li>참외</li>
+	     <li>배</li>
+	     <li>포도</li>
+	     <li>자두</li>
+	     <li>딸기</li>
+	   </ul>
+		
+		
+	</body>
+</html>

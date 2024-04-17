@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>가상요소 실습</title>
+	<style type="text/css">
+	/*  기본글자는 주황색으로 만들고,
+		글자에 마우스를 올렸을때는 파랑으로
+		글자를 클릭했을땐 빨간색으로
+	*/
+	h1{ color : orange;}
+	h1:hover {color:blue;}
+	h1:active {color:red;}
+	
+	/* 버튼의 기본색을 tomato 색, 버튼 글자색 white
+	   만약 버튼에 마우스를 올렸을 때 색을 gray로 
+	*/
+	
+	input[type ~= button]{background : tomato; color:white;}
+	input:hover {background:gray;}
+	</style>
+	
+	
+</head>
+	<body>
+		
+		<h1>HTML+CSS</h1>
+		
+		<input type="button" value="버튼">
+	</body>
+</html>
