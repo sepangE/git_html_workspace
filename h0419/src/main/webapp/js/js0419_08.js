@@ -66,6 +66,19 @@ var res1=n1+n2;
 var res2=n1-n2;
 var res3=n1*n2;
 var res4=n1/n2;
+var res5=n1%n2;
 
-if(s=="+")
+if(s=="+"){
+	document.write(n1+"+"+n2+"="+res1);
+}else if(s=="-"){
+	document.write(n1+"-"+n2+"="+res2);
+}else if(s=="*"){
+	document.write(n1+"*"+n2+"="+res3);
+}else if(s=="/"){
+	document.write(n1+"-"+n2+"="+res4);
+}else if(s=="%"){
+	document.write(n1+"-"+n2+"="+res5);
+}else{
+	doucment.write("잘못 입력하셨습니다.");
+}
 
