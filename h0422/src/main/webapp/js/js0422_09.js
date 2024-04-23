@@ -14,7 +14,7 @@ n번 반복하는 사칙연산기를 만드세요
 
 	 var sum=1;
 	 for(i=1;i<=10;i++){
-		sum=sum*=i;
+		sum*=i;
 	 }document.write(sum+"<br>");
 	 
  document.write("<hr>");
