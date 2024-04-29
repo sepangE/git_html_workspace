@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>html 요소 생성</title>
+	<style>
+		div{border : 1px solid black;}
+	
+	
+	</style>
+	
+	
+	
+	
+	
+</head>
+	<body>
+		<div id = 'div1'> create Element 사용하기	</div>
+
+		<div id = 'div2'> click	</div>
+		<div id = 'div3'> click	클릭 </div>
+		<!-- 새로운 div가 와서 붙게 된다.. script가 밑에 있어서 -->
+		<script>
+		var newDiv = document.createElement("div"); // 새로운 요소를 생성
+		var newTxt = document.createTextNode("새롭게 들어갈 텍스트입니다.");
+		
+		newDiv.appendChild(newTxt);
+		// newDiv에 newTxt를 넣습니다.
+	 	document.body.appendChild(newDiv);
+		// 바디요소에 자식요소로 newDiv를 넣습니다.
+		
+		// document.getElementById(아이디).onclick
+		// = function(){실행할 코드} > 이벤트 추가
+		document.getElementById("div2").onclick = function(){
+			// onclick -> 클릭하면 함수 이하를 실행시켜라
+		alert('div2를 클릭하셨습니다.');
+		}
+		// div3을 생성하고.
+		// div3을 클릭했을때prompt 창으로 숫자 한개를 입력받아
+		// alert창으로 입력받은 숫자를 출력해보세요
+		
+		document.getElementById("div3").onclick = function(){
+			var n = Number(prompt("숫자를 입력해보세요","0"));
+			alert(n);
+		}
+		
+		
+		
+		
+		</script>
+		
+		
+		
+		
+		
+	</body>
+</html>
