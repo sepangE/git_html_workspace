@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>select</title>
+	
+	
+	
+</head>
+	<body>
+		<!-- get : url에 정보를 담아 보냄 pots: 숨김
+			 submit을 했을때 이동되는 url이 action
+		 -->
+		<form action="#" name="frm1" method="get">
+			<label>이름</label>
+			<input type="text" name="name" id="name">
+			<br>
+			<select name="brith" id="brith">
+			
+			
+			</select>
+			<label>년</label>
+			<br>
+			<input type="submit" value="전송">		
+		</form>
+		
+		<script>
+		var str = ''; //'<option value="1990">1990</option>'
+		for(let i = 1990; i<=2024;i++){
+			str += '<option value="'+ i +'">'+i+'</option>'
+		}
+		document.getElementById('birth').innerHTML=str;
+		</script>
+		
+		
+	</body>
+</html>
