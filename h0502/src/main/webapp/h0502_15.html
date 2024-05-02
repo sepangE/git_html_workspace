@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>학생성적 프로그램</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	$(function(){
+		 var cnt=1;
+		$('#writeBtn').click(function(){
+			var name=$('#name').val();
+			var kor=$('#kor').val();
+			var eng=$('#eng').val();
+			var math=$('#math').val();
+			var total=Number(kor)+Number(eng)+Number(math);
+			var avg=(total/3);
+			var num=$('#no');
+			var str='';
+			cnt++
+			str += '<tr><td>'+cnt+'</td>';
+			str += '<td>'+name+'</td>';
+			str += '<td>'+kor+'</td>';
+			str += '<td>'+eng+'</td>';
+			str += '<td>'+math+'</td>';
+			str += '<td>'+total+'</td>';
+			str += '<td>'+avg+'</td>';
+			str += '<td><button onclick="modiBtn('+cnt+')">수정</button>';
+			str += '<button onclick="delBtn('+cnt+')">삭제</button></td>';
+			$("#tbody").append(str);
+			$('#name').val("");
+			$('#kor').val("");
+			$('#eng').val("");
+			$('#math').val("");
+		
+		
+		
+		})//성적등록 버튼 눌렀을때
+		
+	})//jquery
+	
+	</script>
+	
+	
+	<style type="text/css"> *{padding: 0; margin: 0;} form,h2,table{width: 1200px; margin: 30px auto;text-align: center;} table,th,td{border: 1px solid black; border-collapse: collapse;} th{height: 40px; background: #EFEFEF;} td{width: 150px; height: 35px;} </style>
+</head>
+	<body>
+		<form action="" nam="frm" method=get;>
+		<label>번호</label>
+		<input type="hidden" id="no" name="no">
+		<br>
+		<label>이름</label>
+		<input type='text' id="name" name='name'>
+		<br>
+		<label>국어</label>
+		<input type='text' id="kor" name='kor'>
+		<br>
+		<label>영어</label>
+		<input type='text' id='eng' name='eng'>
+		<br>
+		<label>수학</label>
+		<input type='text' id='math' name='math'>	
+		</form>
+		<button id='writeBtn'>성적등록</button>
+		<br><hr><br>
+		<h2>학생 성적 관리 시스템</h2>
+		<table>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>이름</th>
+				<th>국어</th>
+				<th>영어</th>
+				<th>수학</th>
+				<th>총점</th>
+				<th>평균</th>
+				<th>삭제여부</th>
+			</tr>
+		</thead>
+		<tbody id="tbody">
+			<tr id="1">
+				<td>1</td>
+				<td>홍길동</td>
+				<td>100</td>
+				<td>100</td>
+				<td>100</td>
+				<td>300</td>
+				<td>100</td>
+				<td>
+					<button onclick="modiBtn(1)">수정</button>
+					<button onclick="delBtn(1)">삭제</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</body>
+</html>

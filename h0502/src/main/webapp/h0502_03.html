@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery - input</title>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	$(function(){
+		
+		var lb1=$("#id01").text();
+		console.log(lb1);
+		$("#id01").text("name");
+		$("#name").val("홍길동");
+		var name= $("#name").val();
+		
+		// 버튼을 눌렀을때 이름이랑 점수 두개 가져와서
+		// 콘솔창에 출력
+		$("#sbtn").on("click",function(){
+			var name= $("#name").val();
+			var ksc=$("#kor").val();
+			var esc=$("#eng").val();
+			console.log(name);
+			console.log(ksc);
+			console.log(esc);
+			var str =`<h1> ${name}님의 국어점수는 ${kcs} 영어점수는 ${esc} </h1>`;			//$("#text").text(name+"님 국어 :"+ksc+"영어 : "+esc+"점 입니다");
+			$("#text").html(str);//html쓰면 태그 써도 읽어줌
+		
+		
+		})
+		
+	})//jQeury-end
+	
+	
+	</script>
+	
+</head>
+	<body>
+		<form action="#" name="frm1" method="get">
+			<label id="id01">이름</label>
+			<input type="text" name="name" id="name">
+			<br>
+			<label id="id02">국어</label>
+			<input type="text" name="kor" id="kor">
+			<br>
+			<label id="id03">영어</label>
+			<input type="text" name="eng" id="eng">
+			<br>
+			
+		</form>
+		<button id="sbtn">저장</button>
+		<div id="text"></div>
+	</body>
+</html>
