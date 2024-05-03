@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	//제이쿼리를 사용해서, 동의된 개수 출력 (alert)
+	// 컨펌창 갯수가 2 미만이면 전체 동의를 선택하시겠습니까 로 물어본 뒤
+	// 확인 버튼 누르면 다 체크가 되게 this.checked =true;
+	$(function(){
+		$("#memBtn").click(function(){
+			console.log($('input[name="agree"]:checked').length);
+			if($('input[name="agree"]:checked').length<2){
+				if(confirm("전체 동의를 선택하시겠습니까?") ){
+			$('input[name="agree"]').each(function(){
+				this.checked = true;
+			});//each 체크
+				}// 전체동의 if
+
+			
+			};//if문
+		})//회원가입 버튼 눌렀을때
+	})//제이쿼리
+	
+	
+	</script>
+</head>
+	<body>
+		<form action="" method="get" name="frm">
+			<label>개인정보 수집동의1</label>
+			<input type="checkbox" name="agree" id="agree1" value="yes">
+			<br>
+			<label>개인정보 수집동의2</label>
+			<input type="checkbox" name="agree" id="agree2" value="yes">
+		</form>
+		<button id="memBtn">회원가입</button>
+		
+	</body>
+</html>

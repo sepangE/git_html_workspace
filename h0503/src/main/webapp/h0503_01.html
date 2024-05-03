@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+$(function(){
+	$('#zipBtn').click(function(){
+		 new daum.Postcode({
+		 	oncomplete: function(data) {
+		    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+		    // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+		   // postcode  address
+		 	
+		 	$('#postcode').val(data.zonecode);
+		    $('#address').val(data.address);
+		 	
+		 	}
+		  }).open();
+	});//우편번호 찾기 누름
+	
+	
+	
+	
+	
+   var n=1;
+	$("#re_password").on('keyup',function(e){
+	var p1=$('#password').val();
+	var p2=$('#re_password').val();
+    	if(p1==p2){
+    		$('#pwck').text('일치합니다.');
+    		$('#pwck').css('color','blue');
+    	}else{
+    		$('#pwck').text('일치하지 않습니다.');
+    		$('#pwck').css('color','red');
+    	}// if_else문 끝
+	})//비밀번호 확인함수 끝
+	
+	$('.saveBtn').click(function(){
+		n++;
+		// 이름,아이디,비밀번호,이메일
+		var name=$('#user_name').val();
+		var id=$('#user_id').val();
+		var pw=$('#password').val();
+		var em=$('#email').val();
+		
+		var str='';
+		str+="<tr id='m1'"+n+">"
+		str+='<td>'+n+'</td>'
+		str+='<td>'+name+'</td>'
+		str+='<td>'+id+'</td>'
+		str+='<td>'+pw+'</td>'
+		str+='<td>'+em+'</td></tr>'
+		$("#tbody").append(str);
+		
+		
+	})// 저장버튼 누르면 실행되는 함수
+	
+	$('#delBtn').click(function(){
+		var no = $('#delno').val();
+		var name = $('#m'+no).children().eq(1).text;
+		
+		if(confirm(name+'님의 정보를 정말로 삭제하시겠습니까?')){
+			$('#m1'+no).remove();
+		}
+		
+		
+	})// 삭제버튼 눌렀을때
+	
+	
+	
+	
+})//jquery 끝
+
+</script>
+<style>
+
+   form, h1 {margin:0 auto; width:1000px;}
+   table{width:1000px;text-align:center; margin:0 auto;}
+   table, th, td{border: 1px solid black; border-collapse:collapse;}
+	th{height:40px; background:#efefef;}
+	td{height: 35px;}
+</style>
+    
+</head>
+<body>
+<h1>회원가입</h1>
+<br>
+   <form action="" method="get" name="frm">
+    <div class="form-group">
+    <label for="re_password">사용자이름</label>
+    <input type= "text" class="form-control" id="user_name" placeholder="사용자이름" name ="username">
+    </div>
+
+    <div class="form-group">
+      <label for="user_id">아이디</label>
+      <input type="text" class="form-control" id="user_id" placeholder="아이디" name="user_id">   
+      <!-- 이 name 값으로 정보가 전달된다 -->
+    </div>
+
+    <div class="form-group">
+      <label for="password">비밀번호</label>
+      <input type="password" class="form-control" id="password" placeholder="비밀번호" name= "user_pw'">
+    </div>
+    
+    <div class="form-group">
+      <label for="re_password">비밀번호 확인 <span id="pwck"></span></label>
+      <input type= "password" class="form-control" id="re_password" placeholder="비밀번호 확인" name = "re_password">
+    </div>
+    
+    <div class="form-group">
+      <label for="email">이메일</label>
+      <input type= "text" class="form-control" id="email" placeholder="abcd@unnischoice.com" name = "email">
+    </div>
+   
+
+    <div class="form-group">
+      <label for="address">주소</label>
+      <input type="text" class="form-control" id="postcode" name="postcode" placeholder="우편번호">
+      <input type="button" id="zipBtn" value="우편번호 찾기"><br>
+      <input type="text"  class="form-control" id="address" name="address" placeholder="주소"><br>
+      <input type="text"  class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소">
+    </div>
+    </form>
+    <button class="saveBtn" onclick="" >저장</button>
+    <div id="txt"></div>
+    
+    <br><hr><br>
+    <h1>회원목록</h1>
+    <br>
+    <table>
+	    <colgroup>
+	    	<col width="10%" >
+	    	<col width="20%" >
+	    	<col width="20%" >
+	    	<col width="20%" >
+	    	<col width="30%" >
+	    </colgroup>
+    	<thead>
+    		<tr>
+    			<th>번호</th>
+    			<th>이름</th>
+    			<th>아이디</th>
+    			<th>비밀번호</th>
+    			<th>email</th>
+    		</tr>
+    	</thead>
+    	<tbody id="tbody">
+    		<tr id="m1">
+    			<td>1</td>
+    			<td>hong</td>
+    			<td>aaa</td>
+    			<td>1111</td>
+    			<td>aaa@n.com</td>
+    		</tr>
+    	</tbody>
+    </table>
+    <input type="text" id="delno">
+    <button id='delBtn'>삭제</button>
+
+</body>
+</html>

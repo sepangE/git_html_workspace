@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>오브젝트</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	
+	<script>
+	$(function(){
+		
+		let arr = [
+				 { id : 'aaa', name:'홍길동', pw:'111' },
+				 { id : 'bbb', name:'이순신', pw:'222' },
+				 { id : 'ccc', name:'유관순', pw:'333' }]
+		
+				 $('#tBtn').click(function(){
+			
+			let abc= [
+			 ['aaa','홍길동','111'],
+	         ['bbb','이순신','222'],
+	         ['ccc','유관순','333']]
+			
+			
+				
+			 
+			
+			var str='';
+			/* for(i=0;i<abc.length;i++){
+				
+				str += '<tr><td>'+abc[i][0]+'</td>'
+				str += '<td>'+abc[i][1]+'</td>'
+				str += '<td>'+abc[i][2]+'</td>';
+			} 
+			$("#tbody").append(str);
+			*/
+		    $.each(abc,function(i,val){
+		    	str += '<tr><td>'+abc[i][0]+'</td>'
+				str += '<td>'+abc[i][1]+'</td>'
+				str += '<td>'+abc[i][2]+'</td>'
+			}) //each
+			$("#tbody").html(str);
+			
+			 
+		})//버튼1 눌렀을때
+		
+		$('#tBtn2').click(function(){
+			str2='';
+			//console.log(arr[0].id + arr[0].name + arr[0].pw);
+			$.each(arr,function(i,val){
+				str2 += '<tr><td>'+arr[i].id+'</td>'
+				str2 += '<td>'+arr[i].name+'</td>'
+				str2 += '<td>'+arr[i].pw+'</td>'
+			})
+			$("#tbody").html(str2);
+		})//버튼2
+		
+		str3='';
+		$.each(arr,function(i,val){
+			
+			console.log("i값 : "+i);
+			console.log("val값 : "+val)
+			
+			str3 += '<tr><td>'+val[0]+'</td>'
+			str3 += '<td>'+val[1]+'</td>'
+			str3 += '<td>'+val[2]+'</td>'
+		})
+		$("#tbody").html(str3);
+		
+		
+	})//jQuery
+	
+	
+	</script>
+	<style>
+    table{width:500px;text-align:center;}
+    table, th, td{border: 1px solid black; border-collapse:collapse;}
+	th{height:40px; background:#EFEFEF;}
+	td{height: 35px;}
+	</style>
+</head>
+	<body>
+		<button id="tBtn">데이터 가져오기</button><br><br>
+		<button id="tBtn2">데이터 가져오기(obj)</button><br><br>
+		<table>
+			<colgroup>
+				<col width = "40%">
+				<col width = "30%">
+				<col width = "30%">
+			</colgroup>
+			<tr>
+				<th>아이디</th>		
+				<th>이름</th>		
+				<th>비밀번호</th>		
+			</tr>
+			<tbody id ="tbody">
+				<tr>
+					<td colspan='3'>데이터가 없습니다</td>
+				</tr>
+		</table>
+	</body>
+</html>

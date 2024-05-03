@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>다음 api 주소 사용해보기</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+	//우편번호 저장을 누르면
+	// 우편번호+주소+상세주소를 alert창으로 띄우세요
+	$(function(){
+		$('#zipBtn').click(function(){
+			
+			new daum.Postcode({
+       			oncomplete: function(data) {
+          	  // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+          	  // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+       		$('#zip').val(data.zonecode);
+       		$('#addr1').val(data.address);
+       			}
+   			}).open();
+		
+		})//검색버튼
+		
+		$('#zipsave').click(function(){
+		var ba1= $('#zip').val();
+		var ba2= $('#addr1').val();
+		var ba3= $('#addr2').val();
+		alert("우편번호 : "+ba1+'\n'+"주소 : "+ba2+'\n'+"상세주소 : "+ba3);
+		})// 저장버튼
+		
+		
+		
+	})//제이쿼리
+	</script>
+	<style>
+        input{width:300px; height:30px; margin-bottom:10px;}
+    </style>
+</head>
+<body>
+
+	<form action="#" method="get" name="frm">
+        <label>주소</label><br>
+        <input type="text" name="zip" id="zip">
+        <button type="button" id="zipBtn">우편번호 검색</button>
+        <br>
+        <input type="text" name="addr1" id="addr1" placeholder="기본주소가 들어갑니다."><br>
+        <input type="text" name="addr2" id="addr2" placeholder="상세주소를 입력하세요."><br>
+        <button type="button" id="zipsave">우편번호저장</button>
+    </form>
+
+</body>
+</html>

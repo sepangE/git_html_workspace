@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<script>
+	$(function(){
+		//ajax는 웹페이지 전체를 다시 로딩하지 않고
+		// 웹페이지 일부분만 갱신할 수 있게 해줌
+		// ajax는 백그라운드 영역에서 서버와 데이터를 교환해 웹페이지에 뿌림
+	$('#loadBtn').click(function(){
+		$.ajax({
+			url: 'js/test.js',//전송페이지
+			dataType:'text', // 요청한 데이터 형식
+			success: function(data){
+				// 전송에 성공하면 실행되는 코드
+				alert("성공");
+				$('#text').text(data);
+			},
+			error:function(){
+				//전송에 실패하면 실행되는 코드
+				alert("실패");
+			}
+		})//ajasx
+	})//로드버튼 클릭
+	
+	$('#ajaxBtn').click(function(){
+		$.ajax({
+			url: 'js/person.json',
+			dataType:"json",
+			success: function(data){
+				alert("성공");
+			console.log(data);
+				let str='';
+				for(let i=0;i<data.length;i++){
+				str += '<tr><td>'+data[i].id+'</td>';
+				str += '<td>'+data[i].first_name+'</td>';
+				str += '<td>'+data[i].email+'</td>';
+				str += '<td>'+data[i].gender+'</td></tr>';
+				}//for문	
+					$('tbody').html(str);
+				},// 성공시 함수
+			error: function(){
+				alert('실패');
+			}
+		})//ajax함수
+	})// ajax버튼 클릭
+	
+	
+	
+	})//jQuery 끝
+		
+	</script>
+
+	<style>
+   form, h1, table {margin:0 auto; width:1000px;}
+   table{width:1000px;text-align:center;}
+   table, th, td{border: 1px solid black; border-collapse:collapse;}
+	th{height:40px; background:#efefef;}
+	td{height: 35px;}
+</style>
+</head>
+<body>
+
+	<h1>Ajax(Asynchronous JavaScript and XML )</h1>
+	<p id = "text"></p>
+	<button id="loadBtn">load</button>
+	<button id ="ajaxBtn">Ajax</button>
+	<table>
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>이메일</th>
+			<th>성별</th>
+		</tr>
+		<tbody id="tbody">
+			<tr>
+				<td>1</td>
+				<td>gildong</td>
+				<td>gildong@aaa.com</td>
+				<td>male</td>
+			</tr>
+		</tbody>
+	
+	
+	</table>
+
+</body>
+</html>
+접기
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+항공7기수업에 메시지 보내기
+
+
+
+
+
+
+
+
+
+
+Shift + Enter 키를 눌러 새 행을 추가합니다

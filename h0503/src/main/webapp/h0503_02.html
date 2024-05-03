@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>this</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	$(function(){
+		//버튼1을 눌렀을때 버튼1이 누름 이라는 값으로 바뀌게
+		 
+		$('.btn1').click(function(){
+			$('.btn1').val('누름');
+		})
+		$('.btn2').click(function(){
+			$('.btn2').val('누름');
+		})
+		$('.btn3').click(function(){
+			$('.btn3').val('누름');
+		})
+			
+			
+		//버튼1 눌렀을때 함수
+		 // this 자기자신.
+		$('[type="button"]').click(function(){
+			$(this).val('눌렀');
+		})// 버튼 아무거나 눌러도 바뀌게
+		
+		
+		// div에 마우스를 올렸을때
+		// mouseenter > 배경은 파랑, 글씨는 흰색
+		// mouseleave > 배경은 흰, 글씨 검정
+		$('div').on({
+			mouseenter:function(){
+				$(this).css({"background":"blue","color":"white"});
+			},
+			mouseleave:function(){
+				$(this).css({"background":"white","color":"black"});
+			}
+		})// div 마우스 올렸을때 스타일변화
+		
+		//blue클래스 추가제거
+		$('div').on({
+			mouseenter:function(){
+				$(this).addClass('blue');
+			},
+			mouseleave:function(){
+				$(this).removeClass('blue');
+			}
+		})//블루 추가제거
+	})//jquery끝
+	</script>
+	
+	<style>
+		div{width:100px; height:50px; text-align:center;
+		border:1px solid black;}
+		.blue{color:white; font-weight:700; background:lightgreen;}
+	</style>
+</head>
+	<body>
+		<input class='btn1' type='button' value='버튼1'>
+		<input class='btn2' type='button' value='버튼2'>
+		<input class='btn3' type='button' value='버튼3'>
+		<br><br>
+		<div>서울</div>
+		<div>대구</div>
+		<div>대전</div>
+		
+		
+		
+		
+	</body>
+</html>
