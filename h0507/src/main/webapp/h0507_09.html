@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+	$(function(){
+		$("#chBtn").click(function(){
+			var xData= [];
+			var yData= [];
+			var zData= [];
+			$.ajax({
+				url : 'js/income.json',
+				dataType:'json',
+				success:function(data){
+					console.log(data);
+					$.each(data, function(i, val){
+						console.log(val)
+						xData.push(val.year);
+						yData.push(val.sales);
+						zData.push(val.profit);
+					})//each함수
+					console.log(xData);
+					console.log(yData);
+					console.log(zData);
+					const ctx = document.getElementById('myChart');
+						
+					const mixedChart = new Chart(ctx, {
+					    data: {
+					        datasets: [{
+					            type: 'bar',
+					            label: 'Bar Dataset',
+					            data: yData
+					        }, {
+					            type: 'line',
+					            label: 'Line Dataset',
+					            data: zData,
+					        }],
+					        labels: xData
+					    },
+					   
+					});
+					  
+				},//성공시
+				error:function(){
+					alert('에러')
+				}//실패시
+			
+			
+			})//ajax
+			
+		});// 차트가져오기 버튼
+	});//jquery
+	</script>
+	<style>
+	div{width:900px; height:450px; border:1px solid black;}
+	</style>
+	
+</head>
+<body>
+	<button id='chBtn'>차트가져오기</button>
+	<div>
+ 		<canvas id="myChart"></canvas>
+	</div>
+</body>
+</html>

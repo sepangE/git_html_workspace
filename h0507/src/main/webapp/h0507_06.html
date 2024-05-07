@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>고캠핑 공공데이터</title>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	$(function(){
+		$("#ajaxBtn").click(function(){
+			$.ajax({
+				url:'https://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=8CfuxHPeNks82sugbCsk8g8NbzNuom01bOZQybNZfkJpCSoT4OZK0tIm4V7sjBZX1YbjfaTOxEBhQzrIEBvikg%3D%3D&numOfRows=50&pageNo=1&MobileOS=ETC&MobileApp=AppTest',
+				dataType:'xml',
+				success:function(data){
+					console.log(data);
+					var dataxml=$(data).find('items').find('item');
+					console.log(dataxml)
+					var str ='';
+					for(let i=0;i<dataxml.length;i++){
+						//  str += '<tr><td>'+변수.eq(i).find().text()+"</td>";
+						//			기본형	  변수.배열(i).find('아이템').text()
+						str += '<tr><td>'+dataxml.eq(i).find('facltNm').text()+'</td>';
+						str += '<td>'+dataxml.eq(i).find('doNm').text()+'</td>';
+						str += '<td>'+dataxml.eq(i).find('lctCl').text()+'</td>';
+						str += '<td>'+dataxml.eq(i).find('induty').text()+'</td>';
+						str += '<td>'+dataxml.eq(i).find('tel').text()+'</td>';
+						str += '<td><img src="'+dataxml.eq(i).find('firstImageUrl').text()+'"></td>';
+						str += '<td><a href="'+dataxml.eq(i).find('homepage').text()+'"target="_blank">홈페이지로 이동</a></td>';
+						str += '</tr>' ;
+					}//for문
+					$("#tbody").html(str);
+				},//성공시
+				error: function(){
+					alert('실패');
+				}//실패시
+				
+				
+			})//ajax함수
+		
+		})//	ajaxBtn눌렀을때
+	
+	
+	
+	
+	})//jquery
+	</script>
+	<style>
+		div{width:1100px; margin: 0 auto; }
+		#ajaxBtn{width:200px; height: 50px; margin: 50px 0 30px 0;
+				cursor:pointer;}
+		table, th, td{border:1px solid black; border-collapse:collapse;
+			width: 1100px; margin-top:50px; margin:0 auto; 
+			text-align:center;}
+		th,td{height:30px;}
+		th{background:#efefef;}
+		img{width:50px;}
+	</style>
+</head>
+<body>
+	<div>
+		<button id="ajaxBtn">데이터가져오기</button>
+	</div>
+	<table>
+		<tr>
+			<th>facltNm</th>
+			<th>doNm</th>
+			<th>lctCl</th>
+			<th>induty</th>
+			<th>tel</th>
+			<th>firstImageUrl</th>
+			<th>homepage</th>
+		</tr>
+		<tbody id="tbody">
+		</tbody>
+	</table>
+</body>
+</html>

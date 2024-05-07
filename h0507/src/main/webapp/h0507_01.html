@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>복습 게시판</title>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	$(function(){
+		count=0;
+		
+		let today = new Date(); // 오늘날짜. 현재시간
+		let year = today.getFullYear();//년도
+		let month = today.getMonth()+1;//몇월
+		let day = today.getDate();//날짜
+		
+		if(month<10){
+			month = '0'+month; //05월로 표기
+		}
+		if(day<10){
+			day = '0'+day; // 07일로 표기
+		}
+		var todayDate = year+'/'+month+'/'+day;
+		$('#fdate').val(todayDate);
+		var arr =[
+			[1, '안녕하세요', todayDate, '홍길동', 1],
+			[2, '반갑습니다', todayDate, '김철수', 1],
+			[3, '첫 글을 남겨요', todayDate, '신짱구', 1],
+			[4, '좋은하루 보내세요~', todayDate, '훈이', 1],
+			[5, '인사드립니다', todayDate, '맹구', 1],
+			
+		]; 
+		var str=''; 
+		for(let i=0; i<arr.length;i++){
+			count++
+			str+= '<tr id="'+ count + '">';
+			str+= '<td>' + count + '</td>';
+			str+= '<td>' +arr[i][1]+'</td>';
+			str+= '<td>' +arr[i][2]+'</td>';
+			str+= '<td>' +arr[i][3]+'</td>';
+			str+= '<td>' +arr[i][4]+'</td>';
+			str+= '</tr>'
+	 	}
+		$('#tbody').html(str);
+		
+		$('#fBtn').click(function(){
+			count++;
+			var str='<tr id="'+ count + '">';
+			str+= '<td>'+count+'</td>';//넘버
+			str+= '<td>'+$('#ftitle').val()+'</td>';//제목
+			str+= '<td>'+$('#fdate').val()+'</td>';//작성일
+			str+= '<td>'+$('#fuser').val()+'</td>';//작성자
+			str+= '<td>'+$('#fhit').val()+'</td>';//조회수
+			str+= '</tr>';
+			
+			$('#tbody').append(str);
+			
+			$('#ftitle').val("");
+			$('#fuser').val("");
+			$('#fhit').val("");	
+		});// fBtn
+		
+		$('#fopenBtn').click(function(){
+			// 불러오기 버튼
+			
+			let fid = '#'+$('#fidNo').val();
+			//1. children().eq(1)
+			
+			//console.log($(fid).children().eq(1).text());
+			//console.log($(fid+'>td:nth-child(2)').text());
+			
+			var ft = $(fid).children().eq(1).text();
+			var fu = $(fid).children().eq(3).text();
+			var fh = $(fid).children().eq(4).text();
+
+			//읽은 값을 인풋박스에 넣어주기
+			$('#ftitle').val(ft);
+			$('#fuser').val(fu);
+			$('#fhit').val(fh);
+		});//fopenBtn
+		// 원하는 줄 삭제하기
+		$('#fdelBtn').click(function(){
+			//입력한 번호 tr id 가져오기
+			let fid = $('#fidNo').val();
+			
+			// 공백 제거 함수 trim()
+			fid = fid.trim();
+			fid = "#"+fid
+			//alert(fid)
+			if(confirm("정말로 삭제하시겠습니까?")){
+				$(fid).remove();
+			}
+			$('#fidNo').val("");
+		});//fdelBtn
+		
+		$('#fmodiBtn').click(function(){
+			let fno = $('#fidNo').val();
+	
+			fno = fno.trim();
+			
+			var str='';
+			str+= '<td>'+ fno +'</td>';//제목
+			str+= '<td>'+$('#ftitle').val()+'</td>';//제목
+			str+= '<td>'+$('#fdate').val()+'</td>';//작성일
+			str+= '<td>'+$('#fuser').val()+'</td>';//작성자
+			str+= '<td>'+$('#fhit').val()+'</td>';//조회수
+			
+			$("#"+fno).html(str);
+		})//fmodiBtn
+		
+			
+		
+		
+	});//jquery
+	
+	
+	</script>	
+	<style>
+	table,th,td{border: 1px solid black; border-collapse:collapse;}
+	#frm{margin-top:100px; width:500px; margin: 0 auto;}
+	#frm input{border: 1px solid black; margin: 5px;}
+	button{width:150px; height:30px; text-align:center;
+			margin-top:10px;}
+	
+	</style>
+	
+	
+</head>
+<body>
+<h1>게시판</h1>
+	<table>
+		<colgroup>
+			<col width="15%"><col width="40%">
+			<col width="15%"><col width="15%"><col width="15%">
+		</colgroup>
+		<tr><th>No</th><th>제목</th><th>작성일</th><th>작성자</th>
+			<th>조회수</th></tr>
+		<tbody id="tbody"></tbody>
+	</table>
+	<hr>
+	<form action="" method="get" name="frm" id="frm">
+		<label>번호</label>
+		<input type="hidden" name="fno" id="fno"><br>
+		<label>제목</label>
+		<input type="text" name="ftitle" id="ftitle"><br>
+		<label>작성일</label>
+		<input type="text" name="fdate" id="fdate" readonly><br>
+		<label>작성자</label>
+		<input type="text" name="fuser" id="fuser"><br>
+		<label>조회수</label>
+		<input type="text" name="fhit" id="fhit"><br>
+	</form>
+	<button id="fBtn">쓰기</button>&nbsp;&nbsp;
+	<button id="fmodiBtn">수정</button>
+	<br><br>
+	<input type ="text" name="fidNo" id ="fidNo"><br>
+	<button id="fopenBtn">불러오기</button>&nbsp;&nbsp;
+	<button id="fdelBtn">삭제</button>
+</body>
+</html>

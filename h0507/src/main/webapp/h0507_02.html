@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>복습 - 학생성적</title>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	var modi = false;
+	$(function(){
+		var count=100;
+		
+		$('#jBtn').click(function(){
+			
+		//ajax 사용하기
+		$.ajax({
+			url: 'js/stu.json',//읽어오는(전송) 파일
+			type: 'get',//전송 방식
+			data: {id:'admin', pw:'1111'},//전송할 데이터
+			dataType: 'json',//요청한 데이터방식
+			success : function(data){//성공시
+				//alert('성공')
+				console.log(data);
+				console.log(data[0])//{id: 1,name:... }
+				
+				var str='';
+				for(let i=0;i<data.length;i++){
+					str+= '<tr id="'+data[i].id+'">';
+					str+= '<td>'+data[i].id+'</td>';
+					str+= '<td>'+data[i].name+'</td>';
+					str+= '<td>'+data[i].kor+'</td>';
+					str+= '<td>'+data[i].eng+'</td>';
+					str+= '<td>'+data[i].math+'</td>';
+					str+= '<td>'+data[i].total+'</td>';
+					str+= '<td>'+data[i].avg+'</td>';
+					str+= '<td><button onclick="modiBtn('+data[i].id+')">수정</button>&nbsp;';
+					str+= '<button onclick="delBtn('+data[i].id+')">삭제</button></td></tr>';
+					$('#tbody').html(str);
+				}
+			},
+			error: function(){//실패시
+				alert('실패');
+			}//ajax함수
+		})//ajax
+		
+		})//jBtn
+	// 성적 등록 버튼 누르면 추가되게
+		$('#wBtn').click(function(){
+			count++
+		
+			var name=$('#name').val();
+			var kor=$('#kor').val();
+			var eng=$('#eng').val();
+			var math=$('#math').val();
+			var total=Number(kor)+Number(eng)+Number(math);
+			var avg = (total/3).toFixed(2);
+		if(modi==false){
+			// 새로운 등록일때만 실행되는 조건문
+			var str='<tr id="'+ count + '">';
+			str += '<td>'+count+'</td>';
+			str += '<td>'+name+'</td>';
+			str += '<td>'+kor+'</td>';
+			str += '<td>'+eng+'</td>';
+			str += '<td>'+math+'</td>';
+			str += '<td>'+total+'</td>';
+			str += '<td>'+avg+'</td>';
+			str += '<td><button onclick="modiBtn('+count+')">수정</button>&nbsp;';
+			str += '<button onclick="delBtn('+count+')">삭제</button></td></tr>';
+			$('tbody').prepend(str);
+		}else{// 수정버튼 눌렀을때 실행되는 실행문
+			var stuNo=$('#stuNo').val();
+			
+			let str='';
+			str += '<td>'+stuNo+'</td>';
+			str += '<td>'+name+'</td>';
+			str += '<td>'+kor+'</td>';
+			str += '<td>'+eng+'</td>';
+			str += '<td>'+math+'</td>';
+			str += '<td>'+total+'</td>';
+			str += '<td>'+avg+'</td>';
+			str += '<td><button onclick="modiBtn('+count+')">수정</button>&nbsp;';
+			str += '<button onclick="delBtn('+count+')">삭제</button></td></tr>';
+			$('#'+stuNo).html(str);
+		
+		}
+			
+		modi=false;// 무조건 수정이 아닌것으로 설정
+		})//wbtn
+	
+	})//jquery
+	// 삭제버튼 누르면 삭제되게
+	function delBtn(num){
+		//console.log('#'+num)
+		if(confirm("정말로 삭제함?")){
+			$("#"+num).remove();
+		}
+	}//삭제버튼
+	// 수정버튼 누르면 정보 인풋에 표현
+	function modiBtn(num){
+		
+		modi = true;
+		let td = $('#'+num).children();
+		let no = td.eq(0).text();
+		let name = td.eq(1).text();
+		let kor = td.eq(2).text();
+		let eng = td.eq(3).text();
+		let math = td.eq(4).text();
+		$('#name').val(name);
+		$('#kor').val(kor);
+		$('#eng').val(eng);
+		$('#math').val(math);
+		$('#stuNo').val(td.eq(0).text());
+	}
+	</script>
+	<style>
+	*{padding:0; margin:0}
+	h2{width:800px; text-align:center; margin: 0 auto;}
+	form{width:800px; margin:0 auto;}
+	table{width:800px; margin:30px auto; text-align:center;}
+	table,th,td{border:1px solid black; border-collapse:collapse;}
+	th{height:40px; background: #efefef;}
+	th{height:30px;}
+	</style>
+</head>
+<body>
+	<h2>학생성적등록</h2>
+	<form action="" name='frm' method='get'>
+		<input type='hidden' id="stuNo" name="stuNo">
+		<label>이름</label>
+		<input type='text' id="name" name='name'><br>
+		<label>국어</label>
+		<input type='text' id="kor" name='kor'><br>
+		<label>영어</label>
+		<input type='text' id="eng" name='eng'><br>
+		<label>수학</label>
+		<input type='text' id="math" name='math'><br>
+	</form>
+	<button id="wBtn">성적등록</button>
+	<br><br>
+	<button id='jBtn'>데이터 가져오기</button>
+	<h2>학생성적관리시스템</h2>
+	<table>
+		<thead>
+			<tr><th>번호</th><th>이름</th><th>국어</th><th>영어</th>
+				<th>수학</th><th>총점</th><th>평균</th><th>삭제여부</th></tr>
+		</thead>
+		<tbody id="tbody">
+		</tbody>
+	</table>
+	
+</body>
+</html>

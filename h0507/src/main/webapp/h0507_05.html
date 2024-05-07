@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>공공데이터포털 - json</title>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://apis.data.go.kr/B551011/PhotoGalleryService1/galleryList1?serviceKey=8CfuxHPeNks82sugbCsk8g8NbzNuom01bOZQybNZfkJpCSoT4OZK0tIm4V7sjBZX1YbjfaTOxEBhQzrIEBvikg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=json"></script>
+	<script>
+	$(function(){
+	//1. 버튼을 눌렀을때 alert창
+	//2. 버튼을 눌렀을때 키워드값 alert창에 띄우기
+		$("#ajaxBtn").click(function(){
+			var src=$('#search').val();
+			$.ajax({
+				url:'https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1?serviceKey=8CfuxHPeNks82sugbCsk8g8NbzNuom01bOZQybNZfkJpCSoT4OZK0tIm4V7sjBZX1YbjfaTOxEBhQzrIEBvikg%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword='+src+'&_type=xml',
+				dataType:'xml',
+				success:function(data){
+					console.log(data);
+					var dataxml= $(data).find('items').find('item');
+					console.log(dataxml.length)
+					var str='';
+					for(let i=0;i<dataxml.length;i++){
+					//  str += '<tr><td>'+변수.eq(i).find().text()+"</td>";
+					//			기본형	  변수.배열(i).find('아이템').text()
+						str += '<tr><td>'+dataxml.eq(i).find('galContentId').text()+'</td>';
+						str += '<td>'+dataxml.eq(i).find('galCreatedtime').text()+'</td>';
+						str += '<td>'+dataxml.eq(i).find('galPhotographer').text()+'</td>';
+						str += '<td>'+dataxml.eq(i).find('galTitle').text()+'</td>';
+						str += '<td>'+dataxml.eq(i).find('galWebImageUrl').text()+'</td>';
+						str += '</tr>' ;
+					}//for
+					$('#tbody').html(str)
+				},//ajax성공시 함수
+				error:function(){
+					
+				}
+			})//ajax함수
+			
+		})//ajax버튼 눌렀을때
+			
+		
+	})//jquery
+	</script>
+	<style>
+		div{width:1100px; margin: 0 auto; }
+		#ajaxBtn{width:200px; height: 50px; margin: 50px 0 30px 0;
+				cursor:pointer;}
+		table, th, td{border:1px solid black; border-collapse:collapse;
+			width: 1100px; margin-top:50px; margin:0 auto;
+			text-align:center;}
+		th,td{height:30px;}
+		th{background:#EFEFEF;}
+		img{width:50px;}
+	</style>
+</head>
+<body>
+	<div>
+		<label>키워드를 입력해주세요</label>
+		<input type="text" id="search" name="search"><br>
+		<button id='ajaxBtn'>데이터 가져오기</button>
+	</div>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>시간</th>
+			<th>사진작가</th>
+			<th>제목</th>
+			<th>사진주소</th>
+		</tr>
+		<tbody id='tbody'></tbody>
+	</table>
+</body>
+</html>
